@@ -24,9 +24,9 @@ RUN \
 # copy war file to output folder
 RUN \
  mkdir -p \
-	/package && \
- cp /usr/src/subsonic/subsonic-main/target/subsonic.war /package && \
- chmod -R 777 /package
+	/app/subsonic && \
+ cp /usr/src/subsonic/subsonic-main/target/subsonic.war /app/subsonic && \
+ chmod -R 777 /app/subsonic
 
 # Copy war file out to mounted directory
 # CMD ["cp", "-avr", "/package", "/mnt/"]
@@ -42,7 +42,7 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 
 # copy prebuild and war files
 COPY prebuilds/ /prebuilds/
-COPY package/ /app/subsonic/
+#COPY package/ /app/subsonic/
 
 # package version settings
 ARG JETTY_VER="9.3.14.v20161028"
