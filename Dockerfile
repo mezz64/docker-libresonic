@@ -1,3 +1,37 @@
+FROM alpine:3.6
+MAINTAINER mezz64
+
+# environment variables
+ENV TERM=xterm
+
+# install packages
+RUN \
+ apk add --no-cache  \
+	bash \
+	git \
+	maven \
+	openjdk8
+
+# clone source
+RUN \
+ git clone git://github.com/mezz64/subsonic.git /usr/src/subsonic && \
+ git -C /usr/src/subsonic checkout $(git -C /usr/src/subsonic describe --tags --candidates=1 --abbrev=0) && \
+ cd /usr/src/subsonic && \
+
+# build war file
+ mvn package
+
+# copy war file to output folder
+RUN \
+ mkdir -p \
+	/package && \
+ cp /usr/src/subsonic/subsonic-main/target/subsonic.war /package && \
+ chmod -R 777 /package
+
+# Copy war file out to mounted directory
+CMD ["cp", "-avr", "/package", "/mnt/"]
+
+
 FROM lsiobase/alpine:3.6
 MAINTAINER mezz64
 
