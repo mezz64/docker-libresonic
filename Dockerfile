@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM lsiobase/alpine:3.6
 MAINTAINER mezz64
 
 # environment variables
@@ -28,17 +28,10 @@ RUN \
  cp /usr/src/subsonic/subsonic-main/target/subsonic.war /app/subsonic && \
  chmod -R 777 /app/subsonic
 
-# Copy war file out to mounted directory
-# CMD ["cp", "-avr", "/package", "/mnt/"]
-
-
-#FROM lsiobase/alpine:3.6
-#MAINTAINER mezz64
-
 # set version label
 ARG BUILD_DATE
 ARG VERSION
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL build_version="Mezz version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
 # copy prebuild and war files
 COPY prebuilds/ /prebuilds/
