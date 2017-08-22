@@ -1,11 +1,11 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p "${LIBRE_SETTINGS}"/transcode
+mkdir -p "${SUB_SETTINGS}"/transcode
 
-if [[ ! -e "${LIBRE_SETTINGS}"/transcode/ffmpeg || ! -e  "${LIBRE_SETTINGS}"/transcode/flac || ! -e "${LIBRE_SETTINGS}"/transcode/lame  ]]; then
-ln -sf /usr/bin/ffmpeg "${LIBRE_SETTINGS}"/transcode/
-ln -sf /usr/bin/flac "${LIBRE_SETTINGS}"/transcode/
-ln -sf /usr/bin/lame "${LIBRE_SETTINGS}"/transcode/
+if [[ ! -e "${SUB_SETTINGS}"/transcode/ffmpeg || ! -e  "${SUB_SETTINGS}"/transcode/flac || ! -e "${SUB_SETTINGS}"/transcode/lame  ]]; then
+ln -sf /usr/bin/ffmpeg "${SUB_SETTINGS}"/transcode/
+ln -sf /usr/bin/flac "${SUB_SETTINGS}"/transcode/
+ln -sf /usr/bin/lame "${SUB_SETTINGS}"/transcode/
 fi
 
-chown -R abc:abc /config "${LIBRE_SETTINGS}"  "${LIBRE_HOME}"
+chown -R abc:abc /config "${SUB_SETTINGS}"  "${SUB_HOME}"

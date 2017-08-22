@@ -1,5 +1,5 @@
 FROM alpine:3.6
-MAINTAINER sparklyballs
+MAINTAINER mezz64
 
 # environment variables
 ENV TERM=xterm
@@ -14,9 +14,9 @@ RUN \
 
 # clone source
 RUN \
- git clone git://github.com/Libresonic/libresonic.git /usr/src/libresonic && \
- git -C /usr/src/libresonic checkout $(git -C /usr/src/libresonic describe --tags --candidates=1 --abbrev=0) && \
- cd /usr/src/libresonic && \
+ git clone git://github.com/mezz64/subsonic.git /usr/src/subsonic && \
+ git -C /usr/src/subsonic checkout $(git -C /usr/src/subsonic describe --tags --candidates=1 --abbrev=0) && \
+ cd /usr/src/subsonic && \
 
 # build war file
  mvn package
@@ -25,7 +25,7 @@ RUN \
 RUN \
  mkdir -p \
 	/package && \
- cp /usr/src/libresonic/libresonic-main/target/libresonic.war /package && \
+ cp /usr/src/subsonic/subsonic-main/target/subsonic.war /package && \
  chmod -R 777 /package
 
 # Copy war file out to mounted directory

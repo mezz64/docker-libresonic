@@ -1,5 +1,5 @@
 FROM lsiobase/alpine:3.6
-MAINTAINER sparklyballs
+MAINTAINER mezz64
 
 # set version label
 ARG BUILD_DATE
@@ -8,14 +8,14 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 
 # copy prebuild and war files
 COPY prebuilds/ /prebuilds/
-COPY package/ /app/libresonic/
+COPY package/ /app/subsonic/
 
 # package version settings
 ARG JETTY_VER="9.3.14.v20161028"
 
 # environment settings
-ENV LIBRE_HOME="/app/libresonic"
-ENV LIBRE_SETTINGS="/config"
+ENV SUB_HOME="/app/subsonic"
+ENV SUB_SETTINGS="/config"
 
 # install build packages
 RUN \
