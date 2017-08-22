@@ -29,11 +29,11 @@ RUN \
  chmod -R 777 /package
 
 # Copy war file out to mounted directory
-CMD ["cp", "-avr", "/package", "/mnt/"]
+# CMD ["cp", "-avr", "/package", "/mnt/"]
 
 
-FROM lsiobase/alpine:3.6
-MAINTAINER mezz64
+#FROM lsiobase/alpine:3.6
+#MAINTAINER mezz64
 
 # set version label
 ARG BUILD_DATE
